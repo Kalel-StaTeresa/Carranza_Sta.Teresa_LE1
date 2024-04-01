@@ -14,7 +14,7 @@ acc_lib = {}
 def Avail_games():
     pass
 
-
+#Carranza
 def register():
     while True:
         try:
@@ -41,7 +41,8 @@ def register():
             print("Wrong input")
             input()
             return
-        
+
+#Sta.Teresa       
 def userlogin():
     while True:
         try:
@@ -58,7 +59,7 @@ def userlogin():
             print("Wrong input")
             input()
             return
-        
+  
 def adminlogin():
     while True:
         try:
@@ -79,6 +80,7 @@ def adminlogin():
             input()
             return
 
+#Carranza
 def user_menu(username):
     while True:
         try:
@@ -114,9 +116,12 @@ def user_menu(username):
         except ValueError:
             print("Wrong input")
             return
-    
-def rent_game(username):
+#Carranza    
+def rent(username):
     print(game_library.keys)
+    rent = str(input("Please select a game to rent "))
+    
+#Carranza
 def return_game(username):
     pass
 def top_up(username):
@@ -128,6 +133,7 @@ def redeem(username):
 def check_point(username):
     pass
 
+#Sta.Teresa
 def admin_menu():
     while True:
         try:
@@ -148,12 +154,45 @@ def admin_menu():
         except ValueError:
             print("Wrong input")
             return
-        
+#Sta.Teresa        
 def update_menu():
-    pass
+    while True:
+        try:
+            print("Update Game ")
+            print("1. Update Game Copies")
+            print("2. Return a game")
+            print("3. Top-up Account")
+            print("4. Display inventory")
+            print("5. Redeem free game rental")
+            print("6. Check Points")
+            print("7. Log out")
+            
+            choice = input("Enter your choice: ")
+            
+            if choice == "1":
+                rent_game(username)
+            if choice == "2":
+                return_game(username)
+            if choice == "3":
+                top_up(username)
+            if choice == "4":
+                inventory(username)
+            if choice == "5":
+                redeem(username)
+            if choice == "6":
+                check_point(username)
+            if choice == "7":
+                print("Logging out...Goodbye!")
+                menu()
+            else:
+                print("Please input an option")
+                break
+        except ValueError:
+            print("Wrong input")
+            return
         
         
-        
+#Carranza        
 def menu():
     while True:
         try:
