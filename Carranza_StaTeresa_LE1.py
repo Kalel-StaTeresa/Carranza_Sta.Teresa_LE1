@@ -13,34 +13,32 @@ def Avail_games():
 
 
 def register():
-    try:
-        print("REGISTER PAGE")
-        print("Please input information")
-        username = str(input("Please input username"))
-        if username in acc_lib:
-            print("Username already existing")
-            return
-        else:
-            continue
-        password = str(input("Password (must be 8 characters long)"))
-        if len(password) >= 8:
-            print("Account registered succesfully")
-        else:
-            print("Password must be atleast 8 characters long")
-            return
-        
-        userbalance = 0
-        userpoints = 0
-        
-        acc_lib[username] = {
-            "username": username,
-            "password": password,
-            "Balance": userbalance,
-            "Points": userpoints
-        }
-    except ValueError:
-        print("Wrong input")
-        input()
+    while True:
+        try:
+            print("REGISTER PAGE")
+            print("Please input information")
+            username = str(input("Please input username: "))
+            
+            password = str(input("Password (must be 8 characters long): "))
+            if len(password) >= 8:
+                print("Account registered succesfully")
+                return menu()
+            else:
+                print("Password must be atleast 8 characters long")
+                break
+            
+            userbalance = 0
+            userpoints = 0
+            
+            acc_lib[username] = {
+                "username": username,
+                "password": password,
+                "Balance": userbalance,
+                "Points": userpoints
+            }
+        except ValueError:
+            print("Wrong input")
+            input()
         
 def userlogin():
     pass
@@ -73,11 +71,12 @@ def menu():
                 adminlogin()
             if choice == "5":
                 print("Closing app...Goodbye!")
-                break
+                return
             else:
                 print("Please input an option")
-                return
+                break
         except ValueError:
             print("Wrong input")
             return
+menu()
             
