@@ -4,6 +4,8 @@ game_library ={
     "Donkey Kong": 3, "Super Mario Bros" : 5, "Tetris" : 2
 }
 
+
+
 game_lib = {}
 acc_lib = {}
 
@@ -18,34 +20,69 @@ def register():
             print("REGISTER PAGE")
             print("Please input information")
             username = str(input("Please input username: "))
-            
             password = str(input("Password (must be 8 characters long): "))
             if len(password) >= 8:
                 print("Account registered succesfully")
-                return menu()
+                userbalance = 0
+                userpoints = 0
+                
+                acc_lib[username] = {
+                    "username": username,
+                    "password": password,
+                    "Balance": userbalance,
+                    "Points": userpoints
+                    } 
+                return menu() 
             else:
                 print("Password must be atleast 8 characters long")
-                break
-            
-            userbalance = 0
-            userpoints = 0
-            
-            acc_lib[username] = {
-                "username": username,
-                "password": password,
-                "Balance": userbalance,
-                "Points": userpoints
-            }
+                break   
         except ValueError:
             print("Wrong input")
             input()
+            return
         
 def userlogin():
-    pass
-      
-    
+    while True:
+        try:
+            print("LOGIN PAGE")
+            username = str(input("Username: "))
+            password = str(input("Password: "))
+            if username and password not in acc_lib:
+                print("User does not exist.")
+                break
+            else:
+                print("Login Successful")
+                user_menu()
+        except ValueError:
+            print("Wrong input")
+            input()
+            return
+        
 def adminlogin():
+    while True:
+        try:
+            print("ADMIN LOGIN PAGE")
+            admin = str(input("Username: "))
+            if admin == "admin":
+                print("Incorrect Username")
+                break
+            else:
+                adminpass = str(input("Password: "))
+                if adminpass == "adminpass":
+                    print("Incorrect password")
+                else:
+                    print("Login Successful")
+                    admin_menu()
+        except ValueError:
+            print("Wrong input")
+            input()
+            return
+
+def user_menu(username):
     pass
+
+def admin_menu():
+    
         
         
         
